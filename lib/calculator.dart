@@ -9,6 +9,10 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+
+  TextEditingController total = TextEditingController();
+  TextEditingController controller = TextEditingController();
+
   Widget numButton(
       String title, VoidCallback onPressed, double height, Color background) {
     final width = MediaQuery.of(context).size.width;
@@ -40,7 +44,7 @@ class _CalculatorState extends State<Calculator> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: black,
       body: Padding(
         padding: const EdgeInsets.only(top: 50),
         child: height > width
@@ -51,21 +55,44 @@ class _CalculatorState extends State<Calculator> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: width,
-                          height: 155,
-                          color: Colors.green,
-                          child: TextFormField(
-                              style: TextStyle(
-                                color: white,
-                              ),
-                            keyboardType: TextInputType.none,
-                            ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        width: width,
+                        color: black,
+                        child: TextFormField(
+                          controller: controller,
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: white,
+                            fontSize: 45,
+                          ),
+                          textAlign: TextAlign.right,
+                          keyboardType: TextInputType.none,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
                         ),
-
-                      ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        width: width,
+                        color: black,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Total',
+                            style: TextStyle(
+                              color: grey,
+                              fontSize: 35,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                      ),
                     ),
                     Row(
                       children: [
