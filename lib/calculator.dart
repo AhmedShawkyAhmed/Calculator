@@ -48,45 +48,66 @@ class _CalculatorState extends State<Calculator> {
                 width: double.infinity,
                 height: double.infinity,
                 color: black,
-                child: Row(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Column(
+                    Row(
                       children: [
-                        numButton('mc', () {}, 80, darkBlue),
-                        numButton('C', () {}, 80, darkBlue),
-                        numButton('7', () {}, 80, darkGrey),
-                        numButton('4', () {}, 80, darkGrey),
-                        numButton('1', () {}, 80, darkGrey),
-                        numButton('%', () {}, 80, darkGrey),
+                        Container(
+                          width: width,
+                          height: 155,
+                          color: Colors.green,
+                          child: TextFormField(
+                              style: TextStyle(
+                                color: white,
+                              ),
+                            keyboardType: TextInputType.none,
+                            ),
+                        ),
+
                       ],
                     ),
-                    Column(
+                    Row(
                       children: [
-                        numButton('m+', () {}, 80, darkBlue),
-                        numButton('÷', () {}, 80, darkBlue),
-                        numButton('8', () {}, 80, darkGrey),
-                        numButton('5', () {}, 80, darkGrey),
-                        numButton('2', () {}, 80, darkGrey),
-                        numButton('0', () {}, 80, darkGrey),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        numButton('m-', () {}, 80, darkBlue),
-                        numButton('x', () {}, 80, darkBlue),
-                        numButton('9', () {}, 80, darkGrey),
-                        numButton('6', () {}, 80, darkGrey),
-                        numButton('3', () {}, 80, darkGrey),
-                        numButton('.', () {}, 80, darkGrey),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        numButton('mr', () {}, 80, darkBlue),
-                        numButton('⌫', () {}, 80, darkBlue),
-                        numButton('-', () {}, 80, darkBlue),
-                        numButton('+', () {}, 80, darkBlue),
-                        numButton('=', () {}, 176, darkBlue),
+                        Column(
+                          children: [
+                            numButton('mc', () {}, 80, darkBlue),
+                            numButton('C', () {}, 80, darkBlue),
+                            numButton('7', () {}, 80, darkGrey),
+                            numButton('4', () {}, 80, darkGrey),
+                            numButton('1', () {}, 80, darkGrey),
+                            numButton('%', () {}, 80, darkGrey),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            numButton('m+', () {}, 80, darkBlue),
+                            numButton('÷', () {}, 80, darkBlue),
+                            numButton('8', () {}, 80, darkGrey),
+                            numButton('5', () {}, 80, darkGrey),
+                            numButton('2', () {}, 80, darkGrey),
+                            numButton('0', () {}, 80, darkGrey),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            numButton('m-', () {}, 80, darkBlue),
+                            numButton('x', () {}, 80, darkBlue),
+                            numButton('9', () {}, 80, darkGrey),
+                            numButton('6', () {}, 80, darkGrey),
+                            numButton('3', () {}, 80, darkGrey),
+                            numButton('.', () {}, 80, darkGrey),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            numButton('mr', () {}, 80, darkBlue),
+                            numButton('⌫', () {}, 80, darkBlue),
+                            numButton('-', () {}, 80, darkBlue),
+                            numButton('+', () {}, 80, darkBlue),
+                            numButton('=', () {}, 176, darkBlue),
+                          ],
+                        ),
                       ],
                     ),
                   ],
