@@ -1,5 +1,6 @@
-import 'package:calculator/calculator.dart';
+import 'package:calculator/screens/calculator.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Calculator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Calculator(),
+    return Sizer(
+        builder: (context, orientation, deviceType) {
+          return const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Calculator',
+            home: Calculator(),
+          );
+        }
     );
   }
 }
