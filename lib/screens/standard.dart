@@ -12,7 +12,6 @@ class Standard extends StatefulWidget {
 }
 
 class _StandardState extends State<Standard> {
-  TextEditingController total = TextEditingController();
   TextEditingController controller = TextEditingController();
 
   @override
@@ -20,6 +19,7 @@ class _StandardState extends State<Standard> {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
+        title: Text('Standard',style: TextStyle(fontSize: 25,color: white),),
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
