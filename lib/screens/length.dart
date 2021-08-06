@@ -13,13 +13,13 @@ class Length extends StatefulWidget {
 
 class _LengthState extends State<Length> {
   TextEditingController controller = TextEditingController();
-  String dropdownValue = 'Assign To';
+  int? list1,list2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
-        title: Text('Length',style: TextStyle(fontSize: 25,color: white),),
+        title: Text('Length',style: TextStyle(fontSize: 25,color: white,),),
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
@@ -50,24 +50,27 @@ class _LengthState extends State<Length> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
-              child: DropdownButton<String>(
-                dropdownColor: black,
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                iconSize: 24,
+              child: DropdownButton(
+                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                value: list1,
                 style: TextStyle(color: grey,fontSize: 25),
-                onChanged: (String? newValue) {
+                dropdownColor: black,
+                items: const[
+                  DropdownMenuItem(child: Text('Nanometers'),value: 1,),
+                  DropdownMenuItem(child: Text('Millimeters'),value: 2,),
+                  DropdownMenuItem(child: Text('Centimeters'),value: 3,),
+                  DropdownMenuItem(child: Text('Meters'),value: 4,),
+                  DropdownMenuItem(child: Text('Kilometers'),value: 5,),
+                  DropdownMenuItem(child: Text('Inches'),value: 6,),
+                  DropdownMenuItem(child: Text('Feet'),value: 7,),
+                  DropdownMenuItem(child: Text('Yards'),value: 8,),
+                  DropdownMenuItem(child: Text('Miles'),value: 9,),
+                ],
+                onChanged: (value) {
                   setState(() {
-                    dropdownValue = newValue!;
+                    list1 = value as int?;
                   });
                 },
-                items: <String>['Assign To', 'Two', 'three', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             Container(
@@ -88,24 +91,27 @@ class _LengthState extends State<Length> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
-              child: DropdownButton<String>(
-                dropdownColor: black,
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                iconSize: 24,
+              child: DropdownButton(
+                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                value: list2,
                 style: TextStyle(color: grey,fontSize: 25),
-                onChanged: (String? newValue) {
+                dropdownColor: black,
+                items: const[
+                  DropdownMenuItem(child: Text('Nanometers'),value: 1,),
+                  DropdownMenuItem(child: Text('Millimeters'),value: 2,),
+                  DropdownMenuItem(child: Text('Centimeters'),value: 3,),
+                  DropdownMenuItem(child: Text('Meters'),value: 4,),
+                  DropdownMenuItem(child: Text('Kilometers'),value: 5,),
+                  DropdownMenuItem(child: Text('Inches'),value: 6,),
+                  DropdownMenuItem(child: Text('Feet'),value: 7,),
+                  DropdownMenuItem(child: Text('Yards'),value: 8,),
+                  DropdownMenuItem(child: Text('Miles'),value: 9,),
+                ],
+                onChanged: (value) {
                   setState(() {
-                    dropdownValue = newValue!;
+                    list2 = value as int?;
                   });
                 },
-                items: <String>['Assign To', 'Two', 'three', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             Row(
