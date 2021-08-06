@@ -1,4 +1,5 @@
 import 'package:calculator/colors.dart';
+import 'package:calculator/screens/scientific.dart';
 import 'package:calculator/screens/standard.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -21,7 +22,7 @@ Widget calculatorDrawer(BuildContext context){
             ListTile(
               leading: Icon(Icons.science_sharp,color: white,size: 7.w,),
               title: Text('Scientific',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: (){},
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Scientific())),
             ),
             Text('Converter',style: TextStyle(color: yellow,fontSize: 30.sp,),),
             ListTile(
