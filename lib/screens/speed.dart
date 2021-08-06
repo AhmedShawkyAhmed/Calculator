@@ -13,7 +13,7 @@ class Speed extends StatefulWidget {
 
 class _SpeedState extends State<Speed> {
   TextEditingController controller = TextEditingController();
-  String dropdownValue = 'Assign To';
+  int? list1,list2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,24 +50,23 @@ class _SpeedState extends State<Speed> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
-              child: DropdownButton<String>(
-                dropdownColor: black,
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                iconSize: 24,
+              child: DropdownButton(
+                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                value: list1,
                 style: TextStyle(color: grey,fontSize: 25),
-                onChanged: (String? newValue) {
+                dropdownColor: black,
+                items: const[
+                  DropdownMenuItem(child: Text('Centimeters per Second'),value: 1,),
+                  DropdownMenuItem(child: Text('Meters per Second'),value: 2,),
+                  DropdownMenuItem(child: Text('Kilometers per Hour'),value: 3,),
+                  DropdownMenuItem(child: Text('Feet per Second'),value: 4,),
+                  DropdownMenuItem(child: Text('Miles per Hour'),value: 5,),
+                ],
+                onChanged: (value) {
                   setState(() {
-                    dropdownValue = newValue!;
+                    list1 = value as int?;
                   });
                 },
-                items: <String>['Assign To', 'Two', 'three', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             Container(
@@ -88,24 +87,23 @@ class _SpeedState extends State<Speed> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
-              child: DropdownButton<String>(
-                dropdownColor: black,
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                iconSize: 24,
+              child: DropdownButton(
+                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                value: list2,
                 style: TextStyle(color: grey,fontSize: 25),
-                onChanged: (String? newValue) {
+                dropdownColor: black,
+                items: const[
+                  DropdownMenuItem(child: Text('Centimeters per Second'),value: 1,),
+                  DropdownMenuItem(child: Text('Meters per Second'),value: 2,),
+                  DropdownMenuItem(child: Text('Kilometers per Hour'),value: 3,),
+                  DropdownMenuItem(child: Text('Feet per Second'),value: 4,),
+                  DropdownMenuItem(child: Text('Miles per Hour'),value: 5,),
+                ],
+                onChanged: (value) {
                   setState(() {
-                    dropdownValue = newValue!;
+                    list2 = value as int?;
                   });
                 },
-                items: <String>['Assign To', 'Two', 'three', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             Row(
