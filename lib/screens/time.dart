@@ -13,7 +13,7 @@ class Time extends StatefulWidget {
 
 class _TimeState extends State<Time> {
   TextEditingController controller = TextEditingController();
-  String dropdownValue = 'Assign To';
+  int? list1,list2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,24 +50,26 @@ class _TimeState extends State<Time> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
-              child: DropdownButton<String>(
-                dropdownColor: black,
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                iconSize: 24,
+              child: DropdownButton(
+                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                value: list1,
                 style: TextStyle(color: grey,fontSize: 25),
-                onChanged: (String? newValue) {
+                dropdownColor: black,
+                items: const[
+                  DropdownMenuItem(child: Text('Microseconds'),value: 1,),
+                  DropdownMenuItem(child: Text('Milliseconds'),value: 2,),
+                  DropdownMenuItem(child: Text('Seconds'),value: 3,),
+                  DropdownMenuItem(child: Text('Minutes'),value: 4,),
+                  DropdownMenuItem(child: Text('Hours'),value: 5,),
+                  DropdownMenuItem(child: Text('Days'),value: 6,),
+                  DropdownMenuItem(child: Text('Weeks'),value: 7,),
+                  DropdownMenuItem(child: Text('Years'),value: 8,),
+                ],
+                onChanged: (value) {
                   setState(() {
-                    dropdownValue = newValue!;
+                    list1 = value as int?;
                   });
                 },
-                items: <String>['Assign To', 'Two', 'three', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             Container(
@@ -88,24 +90,26 @@ class _TimeState extends State<Time> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25),
-              child: DropdownButton<String>(
-                dropdownColor: black,
-                value: dropdownValue,
-                icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                iconSize: 24,
+              child: DropdownButton(
+                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                value: list2,
                 style: TextStyle(color: grey,fontSize: 25),
-                onChanged: (String? newValue) {
+                dropdownColor: black,
+                items: const[
+                  DropdownMenuItem(child: Text('Microseconds'),value: 1,),
+                  DropdownMenuItem(child: Text('Milliseconds'),value: 2,),
+                  DropdownMenuItem(child: Text('Seconds'),value: 3,),
+                  DropdownMenuItem(child: Text('Minutes'),value: 4,),
+                  DropdownMenuItem(child: Text('Hours'),value: 5,),
+                  DropdownMenuItem(child: Text('Days'),value: 6,),
+                  DropdownMenuItem(child: Text('Weeks'),value: 7,),
+                  DropdownMenuItem(child: Text('Years'),value: 8,),
+                ],
+                onChanged: (value) {
                   setState(() {
-                    dropdownValue = newValue!;
+                    list2 = value as int?;
                   });
                 },
-                items: <String>['Assign To', 'Two', 'three', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             Row(
