@@ -12,7 +12,6 @@ class Scientific extends StatefulWidget {
 }
 
 class _ScientificState extends State<Scientific> {
-  TextEditingController total = TextEditingController();
   TextEditingController controller = TextEditingController();
 
   @override
@@ -20,6 +19,7 @@ class _ScientificState extends State<Scientific> {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
+        title: Text('Scientific',style: TextStyle(fontSize: 25,color: white),),
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
