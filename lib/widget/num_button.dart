@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 Widget numButton(
     String title, VoidCallback onPressed, double height,Color font, Color background) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.only(top: 5,bottom: 6,right: 8,left: 8),
     child: Container(
       width: 20.w,
       height: height,
@@ -17,7 +17,7 @@ Widget numButton(
         child: Text(
           title,
           style: TextStyle(
-            fontSize: 35,
+            fontSize: 6.w,
             color: font,
           ),
         ),
