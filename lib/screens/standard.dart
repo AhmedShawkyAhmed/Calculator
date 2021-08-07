@@ -15,7 +15,7 @@ class _StandardState extends State<Standard> {
   TextEditingController controller = TextEditingController();
   TextEditingController result = TextEditingController();
   int number = 0;
-  late double a, temp1, temp2, memory,total;
+  late double a, temp1, temp2, memory, total;
   late String character;
 
   void calculation(buttonText) {
@@ -79,13 +79,13 @@ class _StandardState extends State<Standard> {
     }
     if (buttonText == '+') {
       setState(() {
-        if(controller.text == ''){
+        if (controller.text == '') {
           setState(() {
             controller.text = '';
             temp1 = 0;
             character = '+';
           });
-        }else{
+        } else {
           setState(() {
             temp1 = double.parse(controller.text);
             character = '+';
@@ -97,54 +97,54 @@ class _StandardState extends State<Standard> {
     }
     if (buttonText == '-') {
       setState(() {
-        if(controller.text == ''){
+        if (controller.text == '') {
           setState(() {
             controller.text = '';
             temp1 = 0;
             character = '-';
           });
-        }else{
+        } else {
           setState(() {
-            controller.text = controller.text + buttonText.toString();
             temp1 = double.parse(controller.text);
             character = '-';
             number = 0;
+            controller.text = '';
           });
         }
       });
     }
     if (buttonText == 'X') {
       setState(() {
-        if(controller.text == ''){
+        if (controller.text == '') {
           setState(() {
             controller.text = '';
             temp1 = 1;
             character = 'X';
           });
-        }else{
+        } else {
           setState(() {
-            controller.text = controller.text + buttonText.toString();
             temp1 = double.parse(controller.text);
             character = 'X';
             number = 0;
+            controller.text = '';
           });
         }
       });
     }
     if (buttonText == '÷') {
       setState(() {
-        if(controller.text == ''){
+        if (controller.text == '') {
           setState(() {
             controller.text = '';
             temp1 = 1;
             character = '÷';
           });
-        }else{
+        } else {
           setState(() {
-            controller.text = controller.text + buttonText.toString();
             temp1 = double.parse(controller.text);
             character = '÷';
             number = 0;
+            controller.text = '';
           });
         }
       });
@@ -179,7 +179,7 @@ class _StandardState extends State<Standard> {
     if (buttonText == 'M+') {
       setState(() {
         number = 1;
-        if(number == 1){
+        if (number == 1) {
           memory = double.parse(controller.text);
           assert(memory is double);
           memory += memory;
@@ -190,7 +190,7 @@ class _StandardState extends State<Standard> {
     if (buttonText == 'M-') {
       setState(() {
         number = 1;
-        if(number == 1){
+        if (number == 1) {
           memory = double.parse(controller.text);
           memory -= memory;
           result.text = memory.toString();
@@ -199,18 +199,33 @@ class _StandardState extends State<Standard> {
     }
     if (buttonText == 'MR') {
       setState(() {
-        controller.text = '';
-        result.text = result.text + memory.toString();
+        if (result.text == '') {
+          controller.text = '';
+          result.text = result.text + memory.toString();
+        } else {
+          result.text = '';
+          controller.text = '';
+          result.text = result.text + memory.toString();
+        }
       });
     }
     if (buttonText == '=') {
-      if(controller.text == ''){
+      if (controller.text == '') {
         result.text = '';
-      }else{
+      } else {
         temp2 = double.parse(controller.text);
-        switch(character){
+        switch (character) {
           case '+':
             total = temp1 + temp2;
+            break;
+          case '-':
+            total = temp1 - temp2;
+            break;
+          case 'X':
+            total = temp1 * temp2;
+            break;
+          case '÷':
+            total = temp1 / temp2;
             break;
         }
       }
@@ -219,7 +234,6 @@ class _StandardState extends State<Standard> {
         number = 1;
         memory = total;
       });
-      print(total);
     }
   }
 
