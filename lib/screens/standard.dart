@@ -191,7 +191,8 @@ class _StandardState extends State<Standard> {
       setState(() {
         number = 1;
         if (number == 1) {
-          memory = double.parse(controller.text);
+          memory = double.parse(result.text);
+          assert(memory is double);
           memory -= memory;
           result.text = memory.toString();
         }
