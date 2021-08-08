@@ -1,4 +1,4 @@
-import 'package:calculator/colors.dart';
+import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +12,18 @@ class Scientific extends StatefulWidget {
 }
 
 class _ScientificState extends State<Scientific> {
-  TextEditingController controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
-        title: Text('Scientific',style: TextStyle(fontSize: 25,color: white),),
+        title: Text(
+          'Scientific',
+          style: TextStyle(
+            fontSize: 25,
+            color: white,
+          ),
+        ),
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
@@ -31,7 +35,10 @@ class _ScientificState extends State<Scientific> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8,right: 8,),
+              padding: const EdgeInsets.only(
+                left: 8,
+                right: 8,
+              ),
               child: Container(
                 width: 100.w,
                 height: 8.h,
@@ -52,7 +59,8 @@ class _ScientificState extends State<Scientific> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8,right: 8,bottom: 3,top: 2),
+              padding:
+                  const EdgeInsets.only(left: 8, right: 8, bottom: 3, top: 2),
               child: Container(
                 width: 100.w,
                 color: black,
