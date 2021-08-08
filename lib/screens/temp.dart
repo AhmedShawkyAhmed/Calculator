@@ -1,4 +1,4 @@
-import 'package:calculator/colors.dart';
+import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +12,18 @@ class Temperature extends StatefulWidget {
 }
 
 class _TemperatureState extends State<Temperature> {
-  TextEditingController controller = TextEditingController();
-  int? list1,list2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
-        title: Text('Temperature',style: TextStyle(fontSize: 25,color: white),),
+        title: Text(
+          'Temperature',
+          style: TextStyle(
+            fontSize: 25,
+            color: white,
+          ),
+        ),
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
@@ -51,14 +55,29 @@ class _TemperatureState extends State<Temperature> {
             Padding(
               padding: const EdgeInsets.only(right: 25),
               child: DropdownButton(
-                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                hint: Text(
+                  'Select Unite',
+                  style: TextStyle(
+                    color: grey,
+                    fontSize: 25,
+                  ),
+                ),
                 value: list1,
-                style: TextStyle(color: grey,fontSize: 25),
+                style: TextStyle(color: grey, fontSize: 25),
                 dropdownColor: black,
-                items: const[
-                  DropdownMenuItem(child: Text('Celsius'),value: 1,),
-                  DropdownMenuItem(child: Text('Fahrenheit'),value: 2,),
-                  DropdownMenuItem(child: Text('Kelvin'),value: 3,),
+                items: const [
+                  DropdownMenuItem(
+                    child: Text('Celsius'),
+                    value: 1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Fahrenheit'),
+                    value: 2,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Kelvin'),
+                    value: 3,
+                  ),
                 ],
                 onChanged: (value) {
                   setState(() {
@@ -86,14 +105,29 @@ class _TemperatureState extends State<Temperature> {
             Padding(
               padding: const EdgeInsets.only(right: 25),
               child: DropdownButton(
-                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                hint: Text(
+                  'Select Unite',
+                  style: TextStyle(
+                    color: grey,
+                    fontSize: 25,
+                  ),
+                ),
                 value: list2,
-                style: TextStyle(color: grey,fontSize: 25),
+                style: TextStyle(color: grey, fontSize: 25),
                 dropdownColor: black,
-                items: const[
-                  DropdownMenuItem(child: Text('Celsius'),value: 1,),
-                  DropdownMenuItem(child: Text('Fahrenheit'),value: 2,),
-                  DropdownMenuItem(child: Text('Kelvin'),value: 3,),
+                items: const [
+                  DropdownMenuItem(
+                    child: Text('Celsius'),
+                    value: 1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Fahrenheit'),
+                    value: 2,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Kelvin'),
+                    value: 3,
+                  ),
                 ],
                 onChanged: (value) {
                   setState(() {
