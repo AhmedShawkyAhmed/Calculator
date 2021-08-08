@@ -1,4 +1,4 @@
-import 'package:calculator/colors.dart';
+import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +12,6 @@ class Length extends StatefulWidget {
 }
 
 class _LengthState extends State<Length> {
-  TextEditingController controller = TextEditingController();
-  TextEditingController result = TextEditingController();
-  int number = 0;
-  int? list1 = 1, list2 = 1;
-  late double temp;
-
   void calculation(buttonText) {
     if (buttonText == '0') {
       setState(() {
@@ -71,12 +65,12 @@ class _LengthState extends State<Length> {
     }
     if (buttonText == '.') {
       if (number == 0) {
-        if(controller.text.isEmpty){
+        if (controller.text.isEmpty) {
           setState(() {
             controller.text = '0' + buttonText.toString();
             number = 1;
           });
-        }else{
+        } else {
           setState(() {
             controller.text = controller.text + buttonText.toString();
             number = 1;
@@ -108,7 +102,7 @@ class _LengthState extends State<Length> {
   }
 
   void length(int from, int to) {
-    if(controller.text.isNotEmpty){
+    if (controller.text.isNotEmpty) {
       temp = double.parse(controller.text);
       assert(temp is double);
       if (from == 1) {
