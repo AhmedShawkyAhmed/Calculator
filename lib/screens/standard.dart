@@ -285,16 +285,17 @@ class _StandardState extends State<Standard> {
               child: Container(
                 width: 100.w,
                 color: black,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    result.text,
-                    style: TextStyle(
-                      color: grey,
-                      fontSize: 35,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    textAlign: TextAlign.right,
+                child: TextFormField(
+                  controller: result,
+                  maxLines: 1,
+                  style: TextStyle(
+                    color: grey,
+                    fontSize: 40,
+                  ),
+                  textAlign: TextAlign.right,
+                  keyboardType: TextInputType.none,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
                   ),
                 ),
               ),
