@@ -1,4 +1,4 @@
-import 'package:calculator/colors.dart';
+import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +12,18 @@ class Weight extends StatefulWidget {
 }
 
 class _WeightState extends State<Weight> {
-  TextEditingController controller = TextEditingController();
-  int? list1,list2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
-        title: Text('Weight',style: TextStyle(fontSize: 25,color: white),),
+        title: Text(
+          'Weight',
+          style: TextStyle(
+            fontSize: 25,
+            color: white,
+          ),
+        ),
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
@@ -51,15 +55,33 @@ class _WeightState extends State<Weight> {
             Padding(
               padding: const EdgeInsets.only(right: 25),
               child: DropdownButton(
-                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                hint: Text(
+                  'Select Unite',
+                  style: TextStyle(
+                    color: grey,
+                    fontSize: 25,
+                  ),
+                ),
                 value: list1,
-                style: TextStyle(color: grey,fontSize: 25),
+                style: TextStyle(color: grey, fontSize: 25),
                 dropdownColor: black,
-                items: const[
-                  DropdownMenuItem(child: Text('Milligrams'),value: 1,),
-                  DropdownMenuItem(child: Text('Centigrams'),value: 2,),
-                  DropdownMenuItem(child: Text('Grams'),value: 3,),
-                  DropdownMenuItem(child: Text('Pounds'),value: 4,),
+                items: const [
+                  DropdownMenuItem(
+                    child: Text('Milligrams'),
+                    value: 1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Centigrams'),
+                    value: 2,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Grams'),
+                    value: 3,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Pounds'),
+                    value: 4,
+                  ),
                 ],
                 onChanged: (value) {
                   setState(() {
@@ -87,15 +109,33 @@ class _WeightState extends State<Weight> {
             Padding(
               padding: const EdgeInsets.only(right: 25),
               child: DropdownButton(
-                hint: Text('Select Unite',style: TextStyle(color: grey,fontSize: 25,),),
+                hint: Text(
+                  'Select Unite',
+                  style: TextStyle(
+                    color: grey,
+                    fontSize: 25,
+                  ),
+                ),
                 value: list2,
-                style: TextStyle(color: grey,fontSize: 25),
+                style: TextStyle(color: grey, fontSize: 25),
                 dropdownColor: black,
-                items: const[
-                  DropdownMenuItem(child: Text('Milligrams'),value: 1,),
-                  DropdownMenuItem(child: Text('Centigrams'),value: 2,),
-                  DropdownMenuItem(child: Text('Grams'),value: 3,),
-                  DropdownMenuItem(child: Text('Pounds'),value: 4,),
+                items: const [
+                  DropdownMenuItem(
+                    child: Text('Milligrams'),
+                    value: 1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Centigrams'),
+                    value: 2,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Grams'),
+                    value: 3,
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Pounds'),
+                    value: 4,
+                  ),
                 ],
                 onChanged: (value) {
                   setState(() {
