@@ -1,4 +1,4 @@
-import 'package:calculator/colors.dart';
+import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +12,6 @@ class Standard extends StatefulWidget {
 }
 
 class _StandardState extends State<Standard> {
-  TextEditingController controller = TextEditingController();
-  TextEditingController result = TextEditingController();
-  int number = 0;
-  late double a, temp1, temp2, memory, total;
-  late String character;
 
   void calculation(buttonText) {
     if (buttonText == '0') {
