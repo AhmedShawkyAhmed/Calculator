@@ -12,6 +12,154 @@ class Temperature extends StatefulWidget {
 }
 
 class _TemperatureState extends State<Temperature> {
+  void actions(buttonText) {
+    if (buttonText == '0') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '1') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '2') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '3') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '4') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '5') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '6') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '7') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '8') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '9') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '.') {
+      if (number == 0) {
+        if (controller.text.isEmpty) {
+          setState(() {
+            controller.text = '0' + buttonText.toString();
+            number = 1;
+          });
+        } else {
+          setState(() {
+            controller.text = controller.text + buttonText.toString();
+            number = 1;
+          });
+        }
+      }
+    }
+    if (buttonText == '00') {
+      setState(() {
+        controller.text = controller.text + buttonText.toString();
+      });
+    }
+    if (buttonText == '+/-') {
+      temp = double.parse(controller.text);
+      assert(temp is double);
+      if (temp > 0) {
+        setState(() {
+          controller.text = '-' + temp.abs().toString();
+        });
+      } else if (temp < 0) {
+        setState(() {
+          controller.text = '' + temp.abs().toString();
+        });
+      }
+    }
+    if (buttonText == 'C') {
+      setState(() {
+        controller.text = '';
+        result.text = '';
+        number = 0;
+      });
+    }
+    if (buttonText == '⌫') {
+      setState(() {
+        number = controller.text.length;
+        controller.text = controller.text.substring(0, number - 1);
+      });
+    }
+    if (controller.text.isNotEmpty) {
+      speed(list1!, list2!);
+    }
+  }
+
+  void speed(int from, int to) {
+    if (controller.text.isNotEmpty) {
+      temp = double.parse(controller.text);
+      assert(temp is double);
+      if (from == 1) {
+        switch (to) {
+          case 1:
+            result.text = controller.text;
+            break;
+          case 2:
+            result.text = (temp * 1.8 + 32).toString();
+            break;
+          case 3:
+            result.text = (temp + 273.15).toString();
+            break;
+        }
+      }
+      if (from == 2) {
+        switch (to) {
+          case 1:
+            result.text = ((temp - 32) / 1.8).toString();
+            break;
+          case 2:
+            result.text = controller.text;
+            break;
+          case 3:
+            result.text = (((temp - 32) / 1.8) + 273.15).toString();
+            break;
+        }
+      }
+      if (from == 3) {
+        switch (to) {
+          case 1:
+            result.text = (temp - 273.15).toString();
+            break;
+          case 2:
+            result.text = (((temp - 273.15) * 1.8) + 32).toString();
+            break;
+          case 3:
+            result.text = controller.text;
+            break;
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +186,7 @@ class _TemperatureState extends State<Temperature> {
             Container(
               width: 100.w,
               color: black,
-              child: TextFormField(
+              child: TextField(
                 controller: controller,
                 maxLines: 1,
                 style: TextStyle(
@@ -56,7 +204,7 @@ class _TemperatureState extends State<Temperature> {
               padding: const EdgeInsets.only(right: 25),
               child: DropdownButton(
                 hint: Text(
-                  'Select Unite',
+                  'Celsius',
                   style: TextStyle(
                     color: grey,
                     fontSize: 25,
@@ -81,8 +229,9 @@ class _TemperatureState extends State<Temperature> {
                 ],
                 onChanged: (value) {
                   setState(() {
-                    list1 = value as int?;
+                    list1 = value as int;
                   });
+                  speed(list1!, list2!);
                 },
               ),
             ),
@@ -91,14 +240,19 @@ class _TemperatureState extends State<Temperature> {
               color: black,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Total',
+                child: TextField(
+                  controller: result,
+                  maxLines: 1,
                   style: TextStyle(
                     color: grey,
-                    fontSize: 35,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 40,
                   ),
                   textAlign: TextAlign.right,
+                  readOnly: true,
+                  keyboardType: TextInputType.none,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                  ),
                 ),
               ),
             ),
@@ -106,7 +260,7 @@ class _TemperatureState extends State<Temperature> {
               padding: const EdgeInsets.only(right: 25),
               child: DropdownButton(
                 hint: Text(
-                  'Select Unite',
+                  'Celsius',
                   style: TextStyle(
                     color: grey,
                     fontSize: 25,
@@ -131,8 +285,9 @@ class _TemperatureState extends State<Temperature> {
                 ],
                 onChanged: (value) {
                   setState(() {
-                    list2 = value as int?;
+                    list2 = value as int;
                   });
+                  speed(list1!, list2!);
                 },
               ),
             ),
@@ -141,33 +296,63 @@ class _TemperatureState extends State<Temperature> {
               children: [
                 Column(
                   children: [
-                    numButton('7', () {}, 20.w, white, darkGrey),
-                    numButton('4', () {}, 20.w, white, darkGrey),
-                    numButton('1', () {}, 20.w, white, darkGrey),
-                    numButton('.', () {}, 20.w, white, darkGrey),
+                    numButton('7', () {
+                      actions('7');
+                    }, 20.w, white, darkGrey),
+                    numButton('4', () {
+                      actions('4');
+                    }, 20.w, white, darkGrey),
+                    numButton('1', () {
+                      actions('1');
+                    }, 20.w, white, darkGrey),
+                    numButton('.', () {
+                      actions('.');
+                    }, 20.w, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
-                    numButton('8', () {}, 20.w, white, darkGrey),
-                    numButton('5', () {}, 20.w, white, darkGrey),
-                    numButton('2', () {}, 20.w, white, darkGrey),
-                    numButton('0', () {}, 20.w, white, darkGrey),
+                    numButton('8', () {
+                      actions('8');
+                    }, 20.w, white, darkGrey),
+                    numButton('5', () {
+                      actions('5');
+                    }, 20.w, white, darkGrey),
+                    numButton('2', () {
+                      actions('2');
+                    }, 20.w, white, darkGrey),
+                    numButton('0', () {
+                      actions('0');
+                    }, 20.w, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
-                    numButton('9', () {}, 20.w, white, darkGrey),
-                    numButton('6', () {}, 20.w, white, darkGrey),
-                    numButton('3', () {}, 20.w, white, darkGrey),
-                    numButton('00', () {}, 20.w, white, darkGrey),
+                    numButton('9', () {
+                      actions('9');
+                    }, 20.w, white, darkGrey),
+                    numButton('6', () {
+                      actions('6');
+                    }, 20.w, white, darkGrey),
+                    numButton('3', () {
+                      actions('3');
+                    }, 20.w, white, darkGrey),
+                    numButton('00', () {
+                      actions('00');
+                    }, 20.w, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
-                    numButton('+/-', () {}, 20.w, white, darkGrey),
-                    numButton('C', () {}, 20.w, yellow, darkGrey),
-                    numButton('⌫', () {}, 43.5.w, yellow, darkGrey),
+                    numButton('+/-', () {
+                      actions('+/-');
+                    }, 20.w, white, darkGrey),
+                    numButton('C', () {
+                      actions('C');
+                    }, 20.w, yellow, darkGrey),
+                    numButton('⌫', () {
+                      actions('⌫');
+                    }, 43.5.w, yellow, darkGrey),
                   ],
                 ),
               ],
