@@ -260,7 +260,7 @@ class _StandardState extends State<Standard> {
               child: Container(
                 width: 100.w,
                 color: black,
-                child: TextFormField(
+                child: TextField(
                   controller: controller,
                   maxLines: 1,
                   style: TextStyle(
@@ -280,17 +280,21 @@ class _StandardState extends State<Standard> {
               child: Container(
                 width: 100.w,
                 color: black,
-                child: TextFormField(
-                  controller: result,
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: grey,
-                    fontSize: 40,
-                  ),
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.none,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: result,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: grey,
+                      fontSize: 40,
+                    ),
+                    textAlign: TextAlign.right,
+                    readOnly: true,
+                    keyboardType: TextInputType.none,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
                   ),
                 ),
               ),
@@ -302,85 +306,85 @@ class _StandardState extends State<Standard> {
                   children: [
                     numButton('MC', () {
                       calculation('MC');
-                    }, 20.w, grey, darkGrey),
+                    }, 10.h, grey, darkGrey),
                     numButton('C', () {
                       calculation('C');
-                    }, 20.w, yellow, darkGrey),
+                    }, 10.h, yellow, darkGrey),
                     numButton('7', () {
                       calculation('7');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('4', () {
                       calculation('4');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('1', () {
                       calculation('1');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('%', () {
                       calculation('%');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('M+', () {
                       calculation('M+');
-                    }, 20.w, grey, darkGrey),
+                    }, 10.h, grey, darkGrey),
                     numButton('÷', () {
                       calculation('÷');
-                    }, 20.w, yellow, darkGrey),
+                    }, 10.h, yellow, darkGrey),
                     numButton('8', () {
                       calculation('8');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('5', () {
                       calculation('5');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('2', () {
                       calculation('2');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('0', () {
                       calculation('0');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('M-', () {
                       calculation('M-');
-                    }, 20.w, grey, darkGrey),
+                    }, 10.h, grey, darkGrey),
                     numButton('X', () {
                       calculation('X');
-                    }, 20.w, yellow, darkGrey),
+                    }, 10.h, yellow, darkGrey),
                     numButton('9', () {
                       calculation('9');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('6', () {
                       calculation('6');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('3', () {
                       calculation('3');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('.', () {
                       calculation('.');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('MR', () {
                       calculation('MR');
-                    }, 20.w, grey, darkGrey),
+                    }, 10.h, grey, darkGrey),
                     numButton('⌫', () {
                       calculation('⌫');
-                    }, 20.w, yellow, darkGrey),
+                    }, 10.h, yellow, darkGrey),
                     numButton('-', () {
                       calculation('-');
-                    }, 20.w, yellow, darkGrey),
+                    }, 10.h, yellow, darkGrey),
                     numButton('+', () {
                       calculation('+');
-                    }, 20.w, yellow, darkGrey),
+                    }, 10.h, yellow, darkGrey),
                     numButton('=', () {
                       calculation('=');
-                    }, 45.w, black, yellow),
+                    }, 21.5.h, black, yellow),
                   ],
                 ),
               ],
