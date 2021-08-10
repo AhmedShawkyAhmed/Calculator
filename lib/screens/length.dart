@@ -94,6 +94,11 @@ class _LengthState extends State<Length> {
       setState(() {
         number = controller.text.length;
         controller.text = controller.text.substring(0, number - 1);
+        if (controller.text.isEmpty) {
+          setState(() {
+            result.text = '';
+          });
+        }
       });
     }
     if (controller.text.isNotEmpty) {
