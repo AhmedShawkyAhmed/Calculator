@@ -362,58 +362,58 @@ class _SpeedState extends State<Speed> {
                   children: [
                     numButton('7', () {
                       actions('7');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('4', () {
                       actions('4');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('1', () {
                       actions('1');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('.', () {
                       actions('.');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('8', () {
                       actions('8');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('5', () {
                       actions('5');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('2', () {
                       actions('2');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('0', () {
                       actions('0');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('9', () {
                       actions('9');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('6', () {
                       actions('6');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('3', () {
                       actions('3');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                     numButton('00', () {
                       actions('00');
-                    }, 20.w, white, darkGrey),
+                    }, 10.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('C', () {
                       actions('C');
-                    }, 43.5.w, yellow, darkGrey),
+                    }, 22.h, yellow, darkGrey),
                     numButton('⌫', () {
                       actions('⌫');
-                    }, 43.5.w, yellow, darkGrey),
+                    }, 22.h, yellow, darkGrey),
                   ],
                 ),
               ],
