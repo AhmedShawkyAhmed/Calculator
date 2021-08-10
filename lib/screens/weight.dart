@@ -12,7 +12,7 @@ class Weight extends StatefulWidget {
 }
 
 class _WeightState extends State<Weight> {
-  void calculation(buttonText) {
+  void actions(buttonText) {
     if (buttonText == '0') {
       setState(() {
         controller.text = controller.text + buttonText.toString();
@@ -97,11 +97,11 @@ class _WeightState extends State<Weight> {
       });
     }
     if (controller.text.isNotEmpty) {
-      length(list1!, list2!);
+      weight(list1!, list2!);
     }
   }
 
-  void length(int from, int to) {
+  void weight(int from, int to) {
     if (controller.text.isNotEmpty) {
       temp = double.parse(controller.text);
       assert(temp is double);
@@ -370,7 +370,7 @@ class _WeightState extends State<Weight> {
                   setState(() {
                     list1 = value as int;
                   });
-                  length(list1!, list2!);
+                  weight(list1!, list2!);
                 },
               ),
             ),
@@ -442,7 +442,7 @@ class _WeightState extends State<Weight> {
                   setState(() {
                     list2 = value as int;
                   });
-                  length(list1!, list2!);
+                  weight(list1!, list2!);
                 },
               ),
             ),
@@ -452,58 +452,58 @@ class _WeightState extends State<Weight> {
                 Column(
                   children: [
                     numButton('7', () {
-                      calculation('7');
+                      actions('7');
                     }, 20.w, white, darkGrey),
                     numButton('4', () {
-                      calculation('4');
+                      actions('4');
                     }, 20.w, white, darkGrey),
                     numButton('1', () {
-                      calculation('1');
+                      actions('1');
                     }, 20.w, white, darkGrey),
                     numButton('.', () {
-                      calculation('.');
+                      actions('.');
                     }, 20.w, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('8', () {
-                      calculation('8');
+                      actions('8');
                     }, 20.w, white, darkGrey),
                     numButton('5', () {
-                      calculation('5');
+                      actions('5');
                     }, 20.w, white, darkGrey),
                     numButton('2', () {
-                      calculation('2');
+                      actions('2');
                     }, 20.w, white, darkGrey),
                     numButton('0', () {
-                      calculation('0');
+                      actions('0');
                     }, 20.w, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('9', () {
-                      calculation('9');
+                      actions('9');
                     }, 20.w, white, darkGrey),
                     numButton('6', () {
-                      calculation('6');
+                      actions('6');
                     }, 20.w, white, darkGrey),
                     numButton('3', () {
-                      calculation('3');
+                      actions('3');
                     }, 20.w, white, darkGrey),
                     numButton('00', () {
-                      calculation('00');
+                      actions('00');
                     }, 20.w, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('C', () {
-                      calculation('C');
+                      actions('C');
                     }, 43.5.w, yellow, darkGrey),
                     numButton('⌫', () {
-                      calculation('⌫');
+                      actions('⌫');
                     }, 43.5.w, yellow, darkGrey),
                   ],
                 ),
