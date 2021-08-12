@@ -1,8 +1,7 @@
 import 'package:calculator/constants.dart';
+import 'package:calculator/screens/calculator.dart';
 import 'package:calculator/screens/length.dart';
-import 'package:calculator/screens/scientific.dart';
 import 'package:calculator/screens/speed.dart';
-import 'package:calculator/screens/standard.dart';
 import 'package:calculator/screens/temp.dart';
 import 'package:calculator/screens/time.dart';
 import 'package:calculator/screens/weight.dart';
@@ -18,24 +17,14 @@ Widget calculatorDrawer(BuildContext context){
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Calculator',style: TextStyle(color: yellow,fontSize: 30.sp,),),
             ListTile(
               leading: Icon(Icons.calculate_outlined,color: white,size: 7.w,),
-              title: Text('Standard',style: TextStyle(color: white,fontSize: 20.sp),),
+              title: Text('Calculator',style: TextStyle(color: white,fontSize: 20.sp),),
               onTap: () => Navigator.push(
                 context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Standard()),
+                PageRouteBuilder(pageBuilder: (_, __, ___) => const Calculator()),
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.science_sharp,color: white,size: 7.w,),
-              title: Text('Scientific',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Scientific()),
-              ),
-            ),
-            Text('Converter',style: TextStyle(color: yellow,fontSize: 30.sp,),),
             ListTile(
               leading: Icon(Icons.square_foot_outlined,color: white,size: 7.w,),
               title: Text('Length',style: TextStyle(color: white,fontSize: 20.sp),),
