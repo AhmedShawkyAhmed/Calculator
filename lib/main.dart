@@ -1,4 +1,4 @@
-import 'package:calculator/screens/standard.dart';
+import 'package:calculator/screens/calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           return const MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Calculator',
-            home: Standard(),
+            home: Calculator(),
           );
         }
     );
