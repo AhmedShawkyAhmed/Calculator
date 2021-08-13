@@ -459,14 +459,18 @@ class _ScientificState extends State<Scientific> {
         }
       });
     }
-    if (buttonText == '(') {
+    if (buttonText == 'Rad') {
       setState(() {
-        controller.text = controller.text + buttonText.toString();
+        a = double.parse(controller.text);
+        assert(a is double);
+        controller.text = (a*(pi/180)).toString();
       });
     }
-    if (buttonText == ')') {
+    if (buttonText == 'Deg') {
       setState(() {
-        controller.text = controller.text + buttonText.toString();
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = (a*(180/pi)).toString();
       });
     }
   }
@@ -630,8 +634,8 @@ class _ScientificState extends State<Scientific> {
                           numButton('sin-1', () {
                             calculation('sin-1');
                           }, 7.h, grey, darkGrey),
-                          numButton('e', () {
-                            calculation('e');
+                          numButton('Rad', () {
+                            calculation('Rad');
                           }, 7.h, grey, darkGrey),
                           numButton('mod', () {
                             calculation('mod');
@@ -643,11 +647,11 @@ class _ScientificState extends State<Scientific> {
                           numButton('cos-1', () {
                             calculation('cos-1');
                           }, 7.h, grey, darkGrey),
-                          numButton('e^x', () {
-                            calculation('e^x');
+                          numButton('Deg', () {
+                            calculation('Deg');
                           }, 7.h, grey, darkGrey),
-                          numButton('(', () {
-                            calculation('(');
+                          numButton('e', () {
+                            calculation('e');
                           }, 7.h, grey, darkGrey),
                         ],
                       ),
@@ -659,8 +663,8 @@ class _ScientificState extends State<Scientific> {
                           numButton('nPr', () {
                             calculation('nPr');
                           }, 7.h, grey, darkGrey),
-                          numButton(')', () {
-                            calculation(')');
+                          numButton('e^x', () {
+                            calculation('e^x');
                           }, 7.h, grey, darkGrey),
                         ],
                       ),
