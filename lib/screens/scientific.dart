@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
@@ -79,10 +78,17 @@ class _ScientificState extends State<Scientific> {
     }
     if (buttonText == '.') {
       if (number == 0) {
-        setState(() {
-          controller.text = controller.text + buttonText.toString();
-          number = 1;
-        });
+        if (controller.text.isEmpty) {
+          setState(() {
+            controller.text = '0' + buttonText.toString();
+            number = 1;
+          });
+        } else {
+          setState(() {
+            controller.text = controller.text + buttonText.toString();
+            number = 1;
+          });
+        }
       }
     }
     if (buttonText == '+') {
@@ -188,6 +194,7 @@ class _ScientificState extends State<Scientific> {
         result.text = '';
       } else {
         temp2 = double.parse(controller.text);
+        assert(temp2 is double);
         switch (character) {
           case '+':
             total = temp1 + temp2;
@@ -201,6 +208,26 @@ class _ScientificState extends State<Scientific> {
           case '÷':
             total = temp1 / temp2;
             break;
+          case '^':
+            total = pow(temp1, temp2).toDouble();
+            break;
+          case '√':
+            total = pow(temp1, (1/temp2)).toDouble();
+            break;
+          case 'L':
+            total = (log(temp1)/ln10) / (log(temp2)/ln10);
+            break;
+          case 'C':
+            total = C(temp1, temp2);
+            break;
+          case 'P':
+            total = P(temp1, temp2);
+            break;
+          case '%':
+            total = temp1 % temp2;
+            break;
+          default:
+            total = 1 * temp2;
         }
       }
       setState(() {
@@ -208,118 +235,266 @@ class _ScientificState extends State<Scientific> {
         number = 1;
       });
     }
-    if (buttonText == 'Sin') {
+    if (buttonText == 'sin') {
       setState(() {
         a = double.parse(controller.text);
         assert(a is double);
-        result.text = sin((a*pi)/180).toString();
+        result.text = sin(a*(pi/180)).toString();
       });
     }
-    if (buttonText == 'Cos') {
+    if (buttonText == 'cos') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = cos(a*(pi/180)).toString();
       });
     }
-    if (buttonText == 'Tan') {
+    if (buttonText == 'tan') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = tan(a*(pi/180)).toString();
       });
     }
     if (buttonText == 'log') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = (log(a)/ln10).toString();
       });
     }
-    if (buttonText == '2^x') {
+    if (buttonText == 'x^2') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = pow(a, 2).toString();
       });
     }
     if (buttonText == 'n^x') {
       setState(() {
-        state = !state;
+        if (controller.text == '') {
+          setState(() {
+            controller.text = '';
+            temp1 = 0;
+            character = '^';
+          });
+        } else {
+          setState(() {
+            temp1 = double.parse(controller.text);
+            character = '^';
+            number = 0;
+            controller.text = '';
+          });
+        }
       });
     }
     if (buttonText == '2√x') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = sqrt(a).toString();
       });
     }
     if (buttonText == 'n√x') {
       setState(() {
-        state = !state;
+        if (controller.text == '') {
+          setState(() {
+            controller.text = '';
+            temp1 = 0;
+            character = '√';
+          });
+        } else {
+          setState(() {
+            temp1 = double.parse(controller.text);
+            character = '√';
+            number = 0;
+            controller.text = '';
+          });
+        }
       });
     }
     if (buttonText == '1/x') {
       setState(() {
-        state = !state;
+        a = 1/double.parse(controller.text);
+        assert(a is double);
+        result.text = a.toString();
       });
     }
     if (buttonText == 'n!') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = fact(a).toString();
       });
     }
     if (buttonText == 'µ') {
+      if(controller.text.isEmpty){
+        setState(() {
+          controller.text = pi.toString();
+        });
+      }else{
+        setState(() {
+          a = double.parse(controller.text);
+          assert(a is double);
+          controller.text = (a * pi).toString();
+        });
+      }
+    }
+    if (buttonText == 'sin-1') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = (asin(a)*(180/pi)).toString();
       });
     }
-    if (buttonText == 'Sinh') {
+    if (buttonText == 'Cos-1') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = (acos(a)*(180/pi)).toString();
       });
     }
-    if (buttonText == 'Cosh') {
+    if (buttonText == 'Tan-1') {
       setState(() {
-        state = !state;
-      });
-    }
-    if (buttonText == 'Tanh') {
-      setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = (atan(a)*(180/pi)).toString();
       });
     }
     if (buttonText == 'Nlogx') {
       setState(() {
-        state = !state;
+        if (controller.text == '') {
+          setState(() {
+            controller.text = '';
+            temp1 = 0;
+            character = 'L';
+          });
+        } else {
+          setState(() {
+            temp1 = double.parse(controller.text);
+            character = 'L';
+            number = 0;
+            controller.text = '';
+          });
+        }
       });
     }
     if (buttonText == 'e') {
-      setState(() {
-        state = !state;
-      });
+      if(controller.text.isEmpty){
+        setState(() {
+          controller.text = e.toString();
+        });
+      }else{
+        setState(() {
+          a = double.parse(controller.text);
+          assert(a is double);
+          result.text = (a * e).toString();
+        });
+      }
     }
     if (buttonText == 'e^x') {
-      setState(() {
-        state = !state;
-      });
+      if(controller.text.isEmpty){
+        setState(() {
+          controller.text = pow(e, 1).toString();
+        });
+      }else{
+        setState(() {
+          a = double.parse(controller.text);
+          assert(a is double);
+          result.text = pow(e, a).toString();
+        });
+      }
     }
     if (buttonText == 'nPr') {
       setState(() {
-        state = !state;
+        if (controller.text == '') {
+          setState(() {
+            controller.text = '';
+            temp1 = 0;
+            character = 'P';
+          });
+        } else {
+          setState(() {
+            temp1 = double.parse(controller.text);
+            character = 'P';
+            number = 0;
+            controller.text = '';
+          });
+        }
       });
     }
     if (buttonText == 'nCr') {
       setState(() {
-        state = !state;
+        if (controller.text == '') {
+          setState(() {
+            controller.text = '';
+            temp1 = 0;
+            character = 'C';
+          });
+        } else {
+          setState(() {
+            temp1 = double.parse(controller.text);
+            character = 'C';
+            number = 0;
+            controller.text = '';
+          });
+        }
       });
     }
     if (buttonText == 'mod') {
       setState(() {
-        state = !state;
+        if (controller.text == '') {
+          setState(() {
+            controller.text = '';
+            temp1 = 0;
+            character = '%';
+          });
+        } else {
+          setState(() {
+            temp1 = double.parse(controller.text);
+            character = '%';
+            number = 0;
+            controller.text = '';
+          });
+        }
       });
     }
     if (buttonText == '(') {
       setState(() {
-        state = !state;
+        controller.text = controller.text + buttonText.toString();
       });
     }
     if (buttonText == ')') {
       setState(() {
-        state = !state;
+        controller.text = controller.text + buttonText.toString();
       });
     }
+  }
+
+  // Function to Calculate the Factorial (n!)
+  double fact(double x) {
+    double u = 1;
+    for (double i = 1; i <= x; i++) {
+      u *=i;
+    }
+    return u;
+  }
+
+  // Function to Calculate the equation of Combinations (nCr)
+  double C(double n, double r){
+    return fact(n) / (fact(r) * fact(n - r));
+  }
+
+  // nPr and P Functions are used to Calculate the equation of Permutations (nPr)
+  double nPr(double p){
+    if (p <= 1) {
+      return 1;
+    }
+    return p * nPr(p - 1);
+  }
+
+  double P(double n, double r){
+    return nPr(n) / nPr(n - r);
   }
 
   @override
@@ -350,7 +525,7 @@ class _ScientificState extends State<Scientific> {
                 width: 100.w,
                 height: 10.h,
                 color: black,
-                child: TextField(
+                child: TextFormField(
                   controller: controller,
                   maxLines: 1,
                   style: TextStyle(
@@ -381,7 +556,6 @@ class _ScientificState extends State<Scientific> {
                       fontSize: 40,
                     ),
                     textAlign: TextAlign.right,
-                    readOnly: true,
                     keyboardType: TextInputType.none,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
@@ -396,54 +570,54 @@ class _ScientificState extends State<Scientific> {
                     children: [
                       Column(
                         children: [
-                          numButton('Sin', () {
-                            calculation('Sin');
-                          }, 8.h, grey, darkGrey),
-                          numButton('2^x', () {
-                            calculation('2^x');
-                          }, 8.h, grey, darkGrey),
+                          numButton('sin', () {
+                            calculation('sin');
+                          }, 7.h, grey, darkGrey),
+                          numButton('x^2', () {
+                            calculation('x^2');
+                          }, 7.h, grey, darkGrey),
                           numButton('1/x', () {
                             calculation('1/x');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                         ],
                       ),
                       Column(
                         children: [
-                          numButton('Cos', () {
-                            calculation('Cos');
-                          }, 8.h, grey, darkGrey),
+                          numButton('cos', () {
+                            calculation('cos');
+                          }, 7.h, grey, darkGrey),
                           numButton('n^x', () {
                             calculation('n^x');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('n!', () {
                             calculation('n!');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                         ],
                       ),
                       Column(
                         children: [
-                          numButton('Tan', () {
-                            calculation('Tan');
-                          }, 8.h, grey, darkGrey),
+                          numButton('tan', () {
+                            calculation('tan');
+                          }, 7.h, grey, darkGrey),
                           numButton('2√x', () {
                             calculation('2√x');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('µ', () {
                             calculation('µ');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                         ],
                       ),
                       Column(
                         children: [
                           numButton('log', () {
                             calculation('log');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('n√x', () {
                             calculation('n√x');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('2nd', () {
                             calculation('2st');
-                          }, 8.h, yellow, darkGrey),
+                          }, 7.h, yellow, darkGrey),
                         ],
                       ),
                     ],
@@ -453,54 +627,54 @@ class _ScientificState extends State<Scientific> {
                     children: [
                       Column(
                         children: [
-                          numButton('Sinh', () {
-                            calculation('Sinh');
-                          }, 8.h, grey, darkGrey),
+                          numButton('sin-1', () {
+                            calculation('sin-1');
+                          }, 7.h, grey, darkGrey),
                           numButton('e', () {
                             calculation('e');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('mod', () {
                             calculation('mod');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                         ],
                       ),
                       Column(
                         children: [
-                          numButton('Cosh', () {
-                            calculation('Cosh');
-                          }, 8.h, grey, darkGrey),
+                          numButton('cos-1', () {
+                            calculation('cos-1');
+                          }, 7.h, grey, darkGrey),
                           numButton('e^x', () {
                             calculation('e^x');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('(', () {
                             calculation('(');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                         ],
                       ),
                       Column(
                         children: [
-                          numButton('Tanh', () {
-                            calculation('Tanh');
-                          }, 8.h, grey, darkGrey),
+                          numButton('tan-1', () {
+                            calculation('tan-1');
+                          }, 7.h, grey, darkGrey),
                           numButton('nPr', () {
                             calculation('nPr');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton(')', () {
                             calculation(')');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                         ],
                       ),
                       Column(
                         children: [
                           numButton('Nlogx', () {
                             calculation('Nlogx');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('nCr', () {
                             calculation('nCr');
-                          }, 8.h, grey, darkGrey),
+                          }, 7.h, grey, darkGrey),
                           numButton('1st', () {
                             calculation('1st');
-                          }, 8.h, yellow, darkGrey),
+                          }, 7.h, yellow, darkGrey),
                         ],
                       ),
                     ],
@@ -512,73 +686,73 @@ class _ScientificState extends State<Scientific> {
                   children: [
                     numButton('C', () {
                       calculation('C');
-                    }, 8.h, yellow, darkGrey),
+                    }, 7.h, yellow, darkGrey),
                     numButton('7', () {
                       calculation('7');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('4', () {
                       calculation('4');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('1', () {
                       calculation('1');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('+/-', () {
                       calculation('+/-');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('÷', () {
                       calculation('÷');
-                    }, 8.h, yellow, darkGrey),
+                    }, 7.h, yellow, darkGrey),
                     numButton('8', () {
                       calculation('8');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('5', () {
                       calculation('5');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('2', () {
                       calculation('2');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('0', () {
                       calculation('0');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('X', () {
                       calculation('X');
-                    }, 8.h, yellow, darkGrey),
+                    }, 7.h, yellow, darkGrey),
                     numButton('9', () {
                       calculation('9');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('6', () {
                       calculation('6');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('3', () {
                       calculation('3');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                     numButton('.', () {
                       calculation('.');
-                    }, 8.h, white, darkGrey),
+                    }, 7.h, white, darkGrey),
                   ],
                 ),
                 Column(
                   children: [
                     numButton('⌫', () {
                       calculation('⌫');
-                    }, 8.h, yellow, darkGrey),
+                    }, 7.h, yellow, darkGrey),
                     numButton('-', () {
                       calculation('-');
-                    }, 8.h, yellow, darkGrey),
+                    }, 7.h, yellow, darkGrey),
                     numButton('+', () {
                       calculation('+');
-                    }, 8.h, yellow, darkGrey),
+                    }, 7.h, yellow, darkGrey),
                     numButton('=', () {
                       calculation('=');
-                    }, 18.h, black, yellow),
+                    }, 16.5.h, black, yellow),
                   ],
                 ),
               ],
