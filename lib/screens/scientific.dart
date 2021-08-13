@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:calculator/constants.dart';
 import 'package:calculator/widget/drawer.dart';
 import 'package:calculator/widget/num_button.dart';
@@ -204,12 +206,13 @@ class _ScientificState extends State<Scientific> {
       setState(() {
         result.text = total.toString();
         number = 1;
-        memory = total;
       });
     }
     if (buttonText == 'Sin') {
       setState(() {
-        state = !state;
+        a = double.parse(controller.text);
+        assert(a is double);
+        result.text = sin((a*pi)/180).toString();
       });
     }
     if (buttonText == 'Cos') {
@@ -345,6 +348,7 @@ class _ScientificState extends State<Scientific> {
               flex: 1,
               child: Container(
                 width: 100.w,
+                height: 10.h,
                 color: black,
                 child: TextField(
                   controller: controller,
@@ -365,6 +369,7 @@ class _ScientificState extends State<Scientific> {
               flex: 1,
               child: Container(
                 width: 100.w,
+                height: 10.h,
                 color: black,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
