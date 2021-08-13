@@ -66,10 +66,17 @@ class _StandardState extends State<Standard> {
     }
     if (buttonText == '.') {
       if (number == 0) {
-        setState(() {
-          controller.text = controller.text + buttonText.toString();
-          number = 1;
-        });
+        if (controller.text.isEmpty) {
+          setState(() {
+            controller.text = '0' + buttonText.toString();
+            number = 1;
+          });
+        } else {
+          setState(() {
+            controller.text = controller.text + buttonText.toString();
+            number = 1;
+          });
+        }
       }
     }
     if (buttonText == '+') {
