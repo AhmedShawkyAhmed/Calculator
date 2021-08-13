@@ -557,7 +557,7 @@ class _ScientificState extends State<Scientific> {
                     maxLines: 1,
                     style: TextStyle(
                       color: grey,
-                      fontSize: 40,
+                      fontSize: 35,
                     ),
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.none,
