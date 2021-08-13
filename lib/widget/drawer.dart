@@ -22,59 +22,94 @@ Widget calculatorDrawer(BuildContext context){
             ListTile(
               leading: Icon(Icons.calculate_outlined,color: white,size: 7.w,),
               title: Text('Standard',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
                 context,
                 PageRouteBuilder(pageBuilder: (_, __, ___) => const Standard()),
-              ),
+              );
+              },
             ),
             ListTile(
               leading: Icon(Icons.science_sharp,color: white,size: 7.w,),
               title: Text('Scientific',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Scientific()),
-              ),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Scientific()),
+                );
+              },
             ),
             Text('Converter',style: TextStyle(color: yellow,fontSize: 30.sp,),),
             ListTile(
               leading: Icon(Icons.square_foot_outlined,color: white,size: 7.w,),
               title: Text('Length',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Length()),
-              ),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Length()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.workspaces_outline,color: white,size: 7.w,),
               title: Text('Weight',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Weight()),
-              ),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Weight()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.thermostat_outlined,color: white,size: 7.w,),
               title: Text('Temperature',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Temperature()),
-              ),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Temperature()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.timer,color: white,size: 7.w,),
               title: Text('Time',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Time()),
-              ),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Time()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.speed,color: white,size: 7.w,),
               title: Text('Speed',style: TextStyle(color: white,fontSize: 20.sp),),
-              onTap: () => Navigator.push(
-                context,
-                PageRouteBuilder(pageBuilder: (_, __, ___) => const Speed()),
-              ),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Speed()),
+                );
+              },
             ),
           ],
         ),
