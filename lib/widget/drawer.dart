@@ -1,4 +1,5 @@
 import 'package:calculator/constants.dart';
+import 'package:calculator/screens/bmi.dart';
 import 'package:calculator/screens/length.dart';
 import 'package:calculator/screens/scientific.dart';
 import 'package:calculator/screens/speed.dart';
@@ -42,6 +43,32 @@ Widget calculatorDrawer(BuildContext context){
                 Navigator.push(
                   context,
                   PageRouteBuilder(pageBuilder: (_, __, ___) => const Scientific()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.grade_outlined,color: white,size: 7.w,),
+              title: Text('GPA',style: TextStyle(color: white,fontSize: 20.sp),),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Scientific()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.monitor_weight_outlined,color: white,size: 7.w,),
+              title: Text('BMI',style: TextStyle(color: white,fontSize: 20.sp),),
+              onTap: () {
+                controller.text = '';
+                result.text = '';
+                number = 0;
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const BMI()),
                 );
               },
             ),
