@@ -1,5 +1,6 @@
 import 'package:calculator/constants.dart';
 import 'package:calculator/screens/bmi.dart';
+import 'package:calculator/screens/gpa.dart';
 import 'package:calculator/screens/length.dart';
 import 'package:calculator/screens/scientific.dart';
 import 'package:calculator/screens/speed.dart';
@@ -47,7 +48,7 @@ Widget calculatorDrawer(BuildContext context){
               },
             ),
             ListTile(
-              leading: Icon(Icons.grade_outlined,color: white,size: 7.w,),
+              leading: Icon(Icons.star_outline_rounded,color: white,size: 7.w,),
               title: Text('GPA',style: TextStyle(color: white,fontSize: 20.sp),),
               onTap: () {
                 controller.text = '';
@@ -55,7 +56,7 @@ Widget calculatorDrawer(BuildContext context){
                 number = 0;
                 Navigator.push(
                   context,
-                  PageRouteBuilder(pageBuilder: (_, __, ___) => const Scientific()),
+                  PageRouteBuilder(pageBuilder: (_, __, ___) => const GPA()),
                 );
               },
             ),
