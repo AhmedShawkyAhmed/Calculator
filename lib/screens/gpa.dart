@@ -11,13 +11,15 @@ class GPA extends StatefulWidget {
 }
 
 class _GPAState extends State<GPA> {
+  double gpa = 0;
+  String grade = 'F';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: black,
       appBar: AppBar(
         title: Text(
-          'GPA',
+          'GPA Calculator',
           style: TextStyle(
             fontSize: 25,
             color: white,
@@ -30,6 +32,22 @@ class _GPAState extends State<GPA> {
         width: 100.w,
         height: 100.h,
         color: black,
+        child: Column(
+          children: [
+            Text(
+              'Your GPA = ${gpa.toString()}',
+              style: TextStyle(color: white,fontSize: 30),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+          color: darkGrey,
+        ),
+        backgroundColor: yellow,
       ),
     );
   }
