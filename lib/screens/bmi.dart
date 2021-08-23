@@ -37,7 +37,7 @@ class _BMIState extends State<BMI> {
       backgroundColor: black,
       appBar: AppBar(
         title: Text(
-          'BMI',
+          'BMI Calculator',
           style: TextStyle(
             fontSize: 25,
             color: white,
