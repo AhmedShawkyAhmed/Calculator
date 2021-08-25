@@ -97,6 +97,7 @@ class _GPAState extends State<GPA> {
               itemCount: row,
               itemBuilder: (BuildContext context, int index) {
                 return gpaRow(
+                  index+1,
                   1,
                   () {},
                 );
