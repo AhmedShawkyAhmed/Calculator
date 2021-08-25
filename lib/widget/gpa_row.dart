@@ -2,7 +2,7 @@ import 'package:calculator/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-Widget gpaRow(int value, VoidCallback call){
+Widget gpaRow(int count, int value, VoidCallback call) {
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: Container(
@@ -13,29 +13,18 @@ Widget gpaRow(int value, VoidCallback call){
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 30.w,
-            height: 50,
-            color: darkGrey,
-            child: TextFormField(
-              maxLength: 20,
-              maxLines: 1,
-              style: TextStyle(
-                color: white,
-                fontSize: 20
-              ),
-              decoration: InputDecoration(
-                counterText: '',
-                hintText: 'Subject',
-                hintStyle: TextStyle(
-                  color: grey,
-                ),
-                fillColor: black,
-                filled: true,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: darkGrey,
-                  ),
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: darkGrey,
+              borderRadius: BorderRadius.circular(100.0),
+            ),
+            child: Center(
+              child: Text(
+                count.toString(),
+                style: TextStyle(
+                  color: white,
+                  fontSize: 25,
                 ),
               ),
             ),
