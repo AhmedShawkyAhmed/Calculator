@@ -6,7 +6,7 @@ Widget gpaRow(int count, int value, VoidCallback call) {
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: Container(
-      width: 100.w,
+      width: 80.w,
       height: 50,
       color: black,
       child: Row(
