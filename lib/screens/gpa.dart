@@ -36,81 +36,103 @@ class _GPAState extends State<GPA> {
         backgroundColor: black,
       ),
       drawer: calculatorDrawer(context),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 15,
-              bottom: 5,
-              right: 20,
-              left: 20,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Your GPA',
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 30,
+      body: SingleChildScrollView(
+        physics: const ScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 15,
+                bottom: 5,
+                right: 30,
+                left: 30,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Your GPA',
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 30,
+                    ),
                   ),
-                ),
-                Text(
-                  'Your Grade',
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 30,
+                  Text(
+                    'Your Grade',
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 30,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-              bottom: 15,
-              right: 90,
-              left: 60,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '$gpa',
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 30,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 8,
+                bottom: 15,
+                right: 90,
+                left: 60,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '$gpa',
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 30,
+                    ),
                   ),
-                ),
-                Text(
-                  grade,
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 30,
+                  Text(
+                    grade,
+                    style: TextStyle(
+                      color: white,
+                      fontSize: 30,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          ListView.builder(
-              shrinkWrap: true,
-              itemCount: row,
-              itemBuilder: (BuildContext context, int index) {
-                return gpaRow(
-                  index+1,
-                  1,
-                  () {},
-                );
-              }),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => addRow(),
-        child: Icon(
-          Icons.add,
-          color: black,
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: row,
+                itemBuilder: (BuildContext context, int index) {
+                  return gpaRow(
+                    index+1,
+                    1,
+                    () {},
+                  );
+                }),
+          ],
         ),
-        backgroundColor: yellow,
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            FloatingActionButton(
+              heroTag: "btn1",
+              onPressed: () {},
+              child: Icon(
+                Icons.check,
+                color: black,
+              ),
+              backgroundColor: yellow,
+            ),
+            FloatingActionButton(
+              heroTag: "btn2",
+              onPressed: () => addRow(),
+              child: Icon(
+                Icons.add,
+                color: black,
+              ),
+              backgroundColor: yellow,
+            )
+          ],
+        ),
       ),
     );
   }
