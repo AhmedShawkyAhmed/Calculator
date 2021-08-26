@@ -115,11 +115,11 @@ class _TemperatureState extends State<Temperature> {
       });
     }
     if (controller.text.isNotEmpty) {
-      speed(list1!, list2!);
+      temperature(list1!, list2!);
     }
   }
 
-  void speed(int from, int to) {
+  void temperature(int from, int to) {
     if (controller.text.isNotEmpty) {
       temp = double.parse(controller.text);
       assert(temp is double);
@@ -236,7 +236,7 @@ class _TemperatureState extends State<Temperature> {
                   setState(() {
                     list1 = value as int;
                   });
-                  speed(list1!, list2!);
+                  temperature(list1!, list2!);
                 },
               ),
             ),
@@ -292,7 +292,7 @@ class _TemperatureState extends State<Temperature> {
                   setState(() {
                     list2 = value as int;
                   });
-                  speed(list1!, list2!);
+                  temperature(list1!, list2!);
                 },
               ),
             ),
