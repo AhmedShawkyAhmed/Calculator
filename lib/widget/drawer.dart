@@ -5,7 +5,7 @@ import 'package:calculator/screens/length.dart';
 import 'package:calculator/screens/scientific.dart';
 import 'package:calculator/screens/speed.dart';
 import 'package:calculator/screens/standard.dart';
-import 'package:calculator/screens/temp.dart';
+import 'package:calculator/screens/temperature.dart';
 import 'package:calculator/screens/time.dart';
 import 'package:calculator/screens/weight.dart';
 import 'package:flutter/material.dart';
