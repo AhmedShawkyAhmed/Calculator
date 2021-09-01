@@ -102,6 +102,7 @@ class _GPAState extends State<GPA> {
                   return gpaRow(
                     index+1,
                     1,
+                    1,
                     () {},
                   );
                 }),
