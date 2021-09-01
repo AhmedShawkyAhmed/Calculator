@@ -2,7 +2,7 @@ import 'package:calculator/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-Widget gpaRow(int count, int value, VoidCallback call) {
+Widget gpaRow(int count, int grade, int hour, VoidCallback call) {
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: Container(
@@ -37,7 +37,7 @@ Widget gpaRow(int count, int value, VoidCallback call) {
                 fontSize: 25,
               ),
             ),
-            value: value,
+            value: grade,
             style: TextStyle(color: grey, fontSize: 25),
             dropdownColor: black,
             items: const [
@@ -106,7 +106,7 @@ Widget gpaRow(int count, int value, VoidCallback call) {
                 fontSize: 25,
               ),
             ),
-            value: value,
+            value: hour,
             style: TextStyle(color: grey, fontSize: 25),
             dropdownColor: black,
             items: const [
